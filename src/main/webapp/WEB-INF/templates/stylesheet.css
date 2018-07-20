@@ -7,27 +7,76 @@ p {
 h1, li {
     font-family: 'Oswald', sans-serif;
     font-size: 48px;
+    font-style: oblique;
+    font-size: larger;
+    text-align: center;
+    text-decoration-color: aquamarine;
 }
 
 form {
     background-color: white;
+    size: 300px 300px;
 }
 
 footer {
-    color: white;
-    border: thick black;
+    color: black;
+    alignment: bottom;
 }
 
 body {
-    background-image: url("img/DSCF0096.JPG");
-    background-repeat: repeat;
+    background-image: url("");
+    background-repeat: no-repeat;
     background-position: center;
 }
 
-button {
-    
+#maincontainer {
+    width:70%;
+    height: 100%;
 }
 
-.title ul, li {
-    border: 1px solid yellow;
+#leftcolumn {
+    float:left;
+    display:inline-block;
+    width: 50%;
+    height: 100%;
+}
+
+#rightcolumn {
+    float:right;
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+}
+
+#buynow_button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    width: 300px;
+    height: 400px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    alignment: center;
+}
+
+.button:hover {
+    background-color: green;
+}
+
+
+.options{
+    width: 100%;
+    list-style-type: none;
+}
+
+.imgbox {
+    display: grid;
+    height: 100%;
+}
+.center-fit {
+    max-width: 100em;
+    max-height: 100em;
+    margin: auto;
 }
