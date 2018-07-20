@@ -7,7 +7,6 @@ p {
 h1, li {
     font-family: 'Oswald', sans-serif;
     font-size: 48px;
-    text-shadow: 4px 4px 4px #ff0000;
 }
 
 form {
@@ -23,6 +22,10 @@ body {
     background-image: url("img/DSCF0096.JPG");
     background-repeat: repeat;
     background-position: center;
+}
+
+button {
+    
 }
 
 .title ul, li {
