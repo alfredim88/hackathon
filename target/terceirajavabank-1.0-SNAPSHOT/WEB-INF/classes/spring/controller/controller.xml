@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="bankAppController" class="org.academiadecodigo.javabank.controller.bankapp.BankAppController">
+        <property name="view" ref="bankAppView"/>
+        <property name="authService" ref="authService"/>
+        <property name="controllerMap">
+            <map>
+                <entry key="OPEN_ACCOUNT" value-ref="openAccountController"/>
+                <entry key="ACCOUNTS_IDS" value-ref="ListAccountsIDsController"/>
+                <entry key="CHECK_BALANCE" value-ref="checkBalanceController"/>
+                <entry key="DEPOSIT" value-ref="depositController"/>
+                <entry key="WITHDRAW" value-ref="withdrawController"/>
+                <entry key="TRANSFER" value-ref="transferController"/>
+                <entry key="LOG_OFF" value-ref="logOffController"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="loginController" class="org.academiadecodigo.javabank.controller.initialmenu.LoginController">
+        <property name="view" ref="loginView"/>
+        <property name="authenticatorService" ref="authService"/>
+        <property name="app" ref="bankAppController"/>
+    </bean>
+
+    <bean name="mainMenuController" class="org.academiadecodigo.javabank.controller.initialmenu.MainMenuController">
+        <property name="view" ref="mainMenuView"/>
+        <property name="controllerMap">
+            <map>
+                <entry key="LOGIN" value-ref="loginController"/>
+                <entry key="REGISTER" value-ref="registerController"/>
+                <entry key="QUIT" value-ref="quitController"/>
+            </map>
+        </property>
+
+    </bean>
+
+    <bean name="registerController" class="org.academiadecodigo.javabank.controller.initialmenu.RegisterController">
+        <property name="customerService" ref="customerService"/>
+        <property name="view" ref="registerView"/>
+    </bean>
+
+    <bean name="checkBalanceController" class="org.academiadecodigo.javabank.controller.bankapp.CheckBalanceController">
+        <property name="customerService" ref="customerService"/>
+        <property name="authService" ref="authService"/>
+        <property name="view" ref="checkBalanceView"/>
+    </bean>
+
+    <bean name="depositController" class="org.academiadecodigo.javabank.controller.bankapp.DepositController">
+        <property name="authService" ref="authService"/>
+        <property name="accountService" ref="accountService"/>
+        <property name="view" ref="depositView"/>
+    </bean>
+
+    <bean name="ListAccountsIDsController" class="org.academiadecodigo.javabank.controller.bankapp.ListAccountsIDsController">
+        <property name="service" ref="authService"/>
+        <property name="view" ref="listAccountsIDsView"/>
+    </bean>
+
+    <bean name="logOffController" class="org.academiadecodigo.javabank.controller.bankapp.LogOffController">
+        <property name="authService" ref="authService"/>
+    </bean>
+
+    <bean name="openAccountController" class="org.academiadecodigo.javabank.controller.bankapp.OpenAccountController">
+        <property name="authService" ref="authService"/>
+        <property name="accountService" ref="accountService"/>
+        <property name="view" ref="openAccountView"/>
+    </bean>
+
+    <bean name="transferController" class="org.academiadecodigo.javabank.controller.bankapp.TransferController">
+        <property name="accountService" ref="accountService"/>
+        <property name="authService" ref="authService"/>
+        <property name="view" ref="transferView"/>
+    </bean>
+
+    <bean name="withdrawController" class="org.academiadecodigo.javabank.controller.bankapp.WithdrawController">
+        <property name="authService" ref="authService"/>
+        <property name="accountService" ref="accountService"/>
+        <property name="customerService" ref="customerService"/>
+        <property name="view" ref="withdrawView"/>
+    </bean>
+
+    <bean name="quitController" class="org.academiadecodigo.javabank.controller.bankapp.QuitController"/>
+
+</beans>

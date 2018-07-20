@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="stdin" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+        <property name="staticField" value="java.lang.System.in"/>
+    </bean>
+
+    <bean id="stdout" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+        <property name="staticField" value="java.lang.System.out"/>
+    </bean>
+
+    <bean id="prompt" class="org.academiadecodigo.bootcamp.Prompt">
+        <constructor-arg name="input" ref="stdin"/>
+        <constructor-arg name="output" ref="stdout"/>
+    </bean>
+
+    <bean name="loginView" class="org.academiadecodigo.javabank.view.initialmenu.LoginView">
+        <property name="controller" ref="loginController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+
+    <bean name="mainMenuView" class="org.academiadecodigo.javabank.view.initialmenu.MainMenuView">
+        <property name="controller" ref="mainMenuController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+
+    <bean name="registerView" class="org.academiadecodigo.javabank.view.initialmenu.RegisterView">
+        <property name="controller" ref="registerController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+
+    <bean name="bankAppView" class="org.academiadecodigo.javabank.view.bankapp.BankAppView">
+        <property name="controller" ref="bankAppController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+
+    <bean name="checkBalanceView" class="org.academiadecodigo.javabank.view.bankapp.CheckBalanceView">
+        <property name="controller" ref="checkBalanceController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+
+    <bean name="depositView" class="org.academiadecodigo.javabank.view.bankapp.DepositView">
+        <property name="controller" ref="depositController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+
+    <bean name="listAccountsIDsView" class="org.academiadecodigo.javabank.view.bankapp.ListAccountIdsView">
+        <property name="controller" ref="ListAccountsIDsController"/>
+    </bean>
+
+    <bean name="openAccountView" class="org.academiadecodigo.javabank.view.bankapp.OpenAccountView">
+        <property name="controller" ref="openAccountController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+
+    <bean name="transferView" class="org.academiadecodigo.javabank.view.bankapp.TransferView">
+        <property name="controller" ref="transferController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+
+    <bean name="withdrawView" class="org.academiadecodigo.javabank.view.bankapp.WithdrawView">
+        <property name="controller" ref="withdrawController"/>
+        <property name="prompt" ref="prompt"/>
+    </bean>
+</beans>
